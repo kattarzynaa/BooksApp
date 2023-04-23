@@ -128,7 +128,7 @@
             bookPath.classList.add('hidden');
           } else if (!shouldBeHidden) {
             bookPath.classList.remove('hidden');
-            
+          }
         }
     });
     

@@ -100,8 +100,8 @@
 
         event.preventDefault();
 
-        if(event.target.type == 'checkbox' && event.target.tagName == 'INPUT' && event.target.name == 'filter'){
-        }
+        // if(event.target.type == 'checkbox' && event.target.tagName == 'INPUT' && event.target.name == 'filter'){
+        // }
         
         if(event.target.checked == true){
           filters.push(event.target.value);
@@ -130,9 +130,9 @@
             bookPath.classList.remove('hidden');
           }
         }
-    });
+      });
     
-  }
+    }
 
 
 
@@ -159,5 +159,6 @@
   }
 
   const app = new BooksList();
+  console.log(app);
 
 }

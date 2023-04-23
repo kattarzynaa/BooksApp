@@ -100,61 +100,62 @@
 
         event.preventDefault();
 
-          if(event.target.type == 'checkbox' && event.target.tagName == 'INPUT' && event.target.name == 'filter'){
-          }
+        if(event.target.type == 'checkbox' && event.target.tagName == 'INPUT' && event.target.name == 'filter'){
+        }
         
-          if(event.target.checked == true){
-            filters.push(event.target.value);
-          } else {
-            const index = filters.indexOf(event.target.value);
-            filters.splice(index, index + 1);
-          }  
+        if(event.target.checked == true){
+          filters.push(event.target.value);
+        } else {
+          const index = filters.indexOf(event.target.value);
+          filters.splice(index, index + 1);
+        }  
     
-          for(let book of dataSource.books){
+        for(let book of dataSource.books){
       
-            const bookPath = document.querySelector('[data-id="' + book.id + '"]');
-            let shouldBeHidden = false;
+          const bookPath = document.querySelector('[data-id="' + book.id + '"]');
+          let shouldBeHidden = false;
       
-            for(let type of filters){
-              if(book.details[type]){
+          for(let type of filters){
+            if(book.details[type]){
               
-                shouldBeHidden = false;
-                break;
+              shouldBeHidden = false;
+              break;
       
-              } else  shouldBeHidden = true;
-            }
-      
-            if(shouldBeHidden) {
-              bookPath.classList.add('hidden');
-            } else if (!shouldBeHidden) {
-              bookPath.classList.remove('hidden');
-            }
+            } else  shouldBeHidden = true;
           }
-      });
-  }
-
-
-
-  determineRatingBgc(value){
-
-    const datas = dataSource.books;
-
-    for(let data of datas){
-      if(value == data.rating && data.rating < 6){
-        return 'linear-gradient(to bottom,  #fefcea 0%, #f1da36 100%)';
-      } 
-      else if(value == data.rating && data.rating > 6 && data.rating <= 8){
-        return 'linear-gradient(to bottom, #b4df5b 0%,#b4df5b 100%)';
-      } 
-      else if(value == data.rating && data.rating > 8 && data.rating <= 9){
-        return 'linear-gradient(to bottom, #299a0b 0%, #299a0b 100%)';
-      } 
-      else if(value == data.rating && data.rating > 9){
-        return 'linear-gradient(to bottom, #ff0084 0%,#ff0084 100%)';
-      } 
-    }
+      
+          if(shouldBeHidden) {
+            bookPath.classList.add('hidden');
+          } else if (!shouldBeHidden) {
+            bookPath.classList.remove('hidden');
+            
+        }
+    });
     
   }
+
+
+
+    determineRatingBgc(value){
+
+      const datas = dataSource.books;
+
+      for(let data of datas){
+        if(value == data.rating && data.rating < 6){
+          return 'linear-gradient(to bottom,  #fefcea 0%, #f1da36 100%)';
+        } 
+        else if(value == data.rating && data.rating > 6 && data.rating <= 8){
+          return 'linear-gradient(to bottom, #b4df5b 0%,#b4df5b 100%)';
+        } 
+        else if(value == data.rating && data.rating > 8 && data.rating <= 9){
+          return 'linear-gradient(to bottom, #299a0b 0%, #299a0b 100%)';
+        } 
+        else if(value == data.rating && data.rating > 9){
+          return 'linear-gradient(to bottom, #ff0084 0%,#ff0084 100%)';
+        } 
+      }
+      
+    }
   }
 
   const app = new BooksList();
